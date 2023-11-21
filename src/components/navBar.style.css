@@ -1,0 +1,42 @@
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+    height: 80px;
+    align-items: center;
+    margin: 2vh 20%;
+    padding: 0 0.2%;
+    background-color: #ffffff;
+    border-radius: 0.5em;
+}
+
+.button {
+    color: #54575e;
+    text-decoration: none;
+    margin: 0 0.3vw;
+}
+
+.button :hover {
+    cursor: pointer;
+}
+
+.company-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.button-contact {
+    padding: 4vh 2vw;
+    color: white;
+    background: linear-gradient(to right, aqua, #0077ff);
+    border-radius: 0.5em;
+}
+
+.home-title{
+    font-size: 125px;
+
+}
