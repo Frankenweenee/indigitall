@@ -1,11 +1,10 @@
+import { Link } from "react-router-dom";
 import "./navBar.style.css";
 
-export function NavBar( {topics, topicCodes} ) {
-   
-    const handleSignUp = () => {
-        window.indigitall.topicsSubscribe(topicCodes, (topics) => {
-            console.log(topics, 'te has subscrito'); 
-        });
+export function NavBar() {
+
+    const handleLogIn = () => {
+        console.log("log in");
     };
     return (
         <nav className="nav-container">
@@ -14,15 +13,14 @@ export function NavBar( {topics, topicCodes} ) {
                 <h2>Indigitall</h2>
             </div>
             <div className="nav-buttons-container">
-                <a className="button" href="/signUp" onClick={handleSignUp}>
+                <Link className="button" to="/signUp">
                     Sign Up
-                </a>
-                <a
-                    href="/logIn"
-                    className="button button-contact"
-                    onClick={handleLogIn}>
+                </Link>
+                <Link
+                    to="/logIn"
+                    className="button button-contact">
                     Log In
-                </a>
+                </Link>
             </div>
         </nav>
     );

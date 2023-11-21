@@ -1,0 +1,25 @@
+form {
+    padding-top: 20vh;
+    width: 100%;
+    display: grid;
+    gap: 2vh;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 3vh;
+    text-decoration: none;
+    color: rgb(52, 52, 52);
+    border-radius: 8px;
+    margin: auto;
+  
+   
+  }
+  
+  input {
+    justify-content: space-between;
+    border-radius: 8px;
+    width: 95%;
+    margin: auto;
+    border: none;
+    padding: 0.5vw;
+    font-size: 3vh;
+  }
+
