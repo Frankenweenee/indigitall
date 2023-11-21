@@ -1,7 +1,9 @@
 import "./form.css";
 import { useIndigitall } from "../context/context";
+import { useNavigate } from "react-router-dom";
 
 export function FormPassword({ onClick }) {
+    const navigate = useNavigate()
     const {
         topicsList,
         sendCustomEvent,
@@ -42,6 +44,10 @@ export function FormPassword({ onClick }) {
                 }
             );
         }
+
+        window.indigitall.logIn('Indigitall_User', (device) =>{
+            navigate('/private_zone')
+        })
     };
 
     return (

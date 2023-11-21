@@ -19,7 +19,7 @@ export function SignInForm({ onClick }) {
                     setEventState({
                         message:
                             "Ahora estás más cerca de unite al mundo INDIGITALL",
-                        backgroundColor: "red",
+                        backgroundColor: "blue",
                     });
                     topicsList.map((topic) => {
                         if (

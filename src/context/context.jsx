@@ -13,7 +13,6 @@ export function IndigitallProvider({ children }) {
     const [topicsSubscribe, setTopicsSubscribe] = useState(null);
     const [topicsUnsubscribe, setTopicsUnsubscribe] = useState(null);
     const [eventState, setEventState] = useState({})
-    const [logIn, setLogIn] = useState(null)
     const [logOut, setLogOut] = useState(null)
 
     useEffect(() => {
@@ -39,15 +38,14 @@ export function IndigitallProvider({ children }) {
                 setSendCustomEvent(() => window.indigitall.sendCustomEvent);
                 setTopicsSubscribe(() => window.indigitall.topicsSubscribe);
                 setTopicsUnsubscribe(() => window.indigitall.topicsUnsubscribe);
-                setLogIn(window.indigitall.logIn);
-                setLogOut(window.indigitall.logOut);
+                setLogOut(()=>window.indigitall.logOut);
                 setIndigitallReady(true);
             }
         });
 
         setEventState({
             message: '',
-            backgroundColor: '',
+            backgroundColor: 'red',
         });
     }, []);
 
@@ -61,7 +59,6 @@ export function IndigitallProvider({ children }) {
                 topicsUnsubscribe,
                 eventState,
                 setEventState,
-                logIn,
                 logOut,
             }}>
             {children}

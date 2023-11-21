@@ -3,13 +3,14 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 60vw;
+    width: 50vw;
     height: 80px;
     align-items: center;
-    margin: 2vh 20%;
-    padding: 0 0.2%;
+    padding-left: 2%;
+    padding-right: 1%;
     background-color: #ffffff;
     border-radius: 0.5em;
+    margin-top: 2vh;
 }
 
 .button {

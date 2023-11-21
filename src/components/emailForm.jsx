@@ -16,7 +16,7 @@ export function FormEmail({onClick}) {
                 },
                 (response) => {
                     setEventState({message: 'Cada vez está más cerca',
-                    backgroundColor: 'blue'})
+                    backgroundColor: 'lime'})
                     topicsList.map((topic) => {
                         if (
                             topic.code === "incomplete_step2" &&
