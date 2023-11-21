@@ -1,4 +1,5 @@
 import { NavBar } from "./components/navBar";
+
 export function Home() {
     return (
         <>

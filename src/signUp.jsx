@@ -1,34 +1,36 @@
-import { useIndigitall } from "./context/context";
 import { SignInForm } from "./components/signInForm";
+import { FormEmail } from "./components/emailForm";
+import { FormPassword } from "./components/formPassword";
 import { TopicsList } from "./components/topics";
+import { useState } from "react";
 
 export function SignUp() {
-    const { topics, sendCustomEvent, topicsSubscribe } = useIndigitall();
+    const [formState, setFormState] = useState(1);
+    
+    const handleClick = () => {
+        setFormState(formState + 1);
+    };
 
-    if (topicsSubscribe) {
-        let topicsCodes = topics.map((topic) => {
-            return { ...topic, subscribed: true };
-        });
-        console.log(topics);
-    }
-
-    if (sendCustomEvent) {
-        sendCustomEvent(
-            {
-                eventType: "EVENTO_1",
-                customData: {},
-                async: false,
-            },
-            (response) => {},
-            (error) => {
-                //LOG ERROR
-            }
+    if (formState === 1) {
+        return (
+            <>
+                <SignInForm onClick={handleClick} />
+                <TopicsList />
+            </>
+        );
+    } else if (formState === 2) {
+        return (
+            <>
+                <FormEmail onClick={handleClick} />
+                <TopicsList />
+            </>
+        );
+    } else if (formState === 3) {
+        return (
+            <>
+                <FormPassword onClick={handleClick} />
+                <TopicsList />
+            </>
         );
     }
-    return (
-        <>
-            <SignInForm topics={topics} />
-            <TopicsList topics={topics} />
-        </>
-    );
 }

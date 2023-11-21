@@ -8,10 +8,13 @@ export function useIndigitall() {
 
 export function IndigitallProvider({ children }) {
     const [isIndigitallReady, setIndigitallReady] = useState(false);
-    const [topics, setTopics] = useState([]);
+    const [topicsList, setTopicsList] = useState([]);
     const [sendCustomEvent, setSendCustomEvent] = useState(null);
     const [topicsSubscribe, setTopicsSubscribe] = useState(null);
     const [topicsUnsubscribe, setTopicsUnsubscribe] = useState(null);
+    const [eventState, setEventState] = useState({})
+    const [logIn, setLogIn] = useState(null)
+    const [logOut, setLogOut] = useState(null)
 
     useEffect(() => {
         new Promise((resolve, reject) => {
@@ -29,16 +32,22 @@ export function IndigitallProvider({ children }) {
                         "/node_modules/indigitall-web-sdk/worker.min.js",
                     requestLocation: true,
                 });
-            
-                window.indigitall.topicsList((topics) => {
-                    setTopics(topics);
-                });
 
+                window.indigitall.topicsList((topics) => {
+                    setTopicsList(topics);
+                });
                 setSendCustomEvent(() => window.indigitall.sendCustomEvent);
                 setTopicsSubscribe(() => window.indigitall.topicsSubscribe);
                 setTopicsUnsubscribe(() => window.indigitall.topicsUnsubscribe);
+                setLogIn(window.indigitall.logIn);
+                setLogOut(window.indigitall.logOut);
                 setIndigitallReady(true);
             }
+        });
+
+        setEventState({
+            message: '',
+            backgroundColor: '',
         });
     }, []);
 
@@ -46,10 +55,14 @@ export function IndigitallProvider({ children }) {
         <IndigitallContext.Provider
             value={{
                 isIndigitallReady,
-                topics,
+                topicsList,
                 sendCustomEvent,
                 topicsSubscribe,
                 topicsUnsubscribe,
+                eventState,
+                setEventState,
+                logIn,
+                logOut,
             }}>
             {children}
         </IndigitallContext.Provider>

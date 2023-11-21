@@ -1,29 +1,25 @@
 import "./form.css";
 import { useIndigitall } from "../context/context";
 
-export function SignInForm({ onClick }) {
-    const { topicsList, sendCustomEvent, topicsUnsubscribe, setEventState } =
-        useIndigitall();
-
+export function FormEmail({onClick}) {
+    const { topicsList, sendCustomEvent, topicsUnsubscribe, eventState, setEventState } = useIndigitall();
+    
     const handleSubmit = (event) => {
         event.preventDefault();
-        onClick();
+        onClick()
         if (sendCustomEvent) {
             sendCustomEvent(
                 {
-                    eventType: "step1",
+                    eventType: "step2",
                     customData: {},
                     async: false,
                 },
                 (response) => {
-                    setEventState({
-                        message:
-                            "Ahora estás más cerca de unite al mundo INDIGITALL",
-                        backgroundColor: "red",
-                    });
+                    setEventState({message: 'Cada vez está más cerca',
+                    backgroundColor: 'blue'})
                     topicsList.map((topic) => {
                         if (
-                            topic.code === "incomplete_step1" &&
+                            topic.code === "incomplete_step2" &&
                             topicsUnsubscribe
                         ) {
                             topic.subscribed = false;
@@ -32,6 +28,9 @@ export function SignInForm({ onClick }) {
                             });
                         }
                     });
+                   
+                   
+              
                 },
                 (error) => {
                     console.log(error);
@@ -41,10 +40,14 @@ export function SignInForm({ onClick }) {
     };
 
     return (
-        <form method="POST" onSubmit={handleSubmit}>
-            <input type="text" name="name" placeholder="name" />
-            <input type="date" name="date" />
-            <button type="submit">Enviar</button>
-        </form>
+        <>
+            <form method="POST" onSubmit={handleSubmit}>
+                <input type="email" name="name" placeholder="Email" />
+                <input type="email" name="date" placeholder="Confirm email"/>
+                <button type="submit">Enviar</button>
+            </form>
+            <p style={{ backgroundColor: eventState.backgroundColor  }}>{eventState.message}</p>
+
+        </>
     );
 }
