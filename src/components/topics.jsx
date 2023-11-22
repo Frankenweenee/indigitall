@@ -5,6 +5,7 @@ export function TopicsList() {
     const subscribedTopics = topicsList
         .filter((topic) => topic.subscribed === true)
         .reverse();
+    if (subscribedTopics){
     return (
         <div>
             <p>Te faltan estos pasos para lograrlo:</p>
@@ -15,5 +16,6 @@ export function TopicsList() {
             </ul>
         </div>
     );
+                }
 }
 

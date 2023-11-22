@@ -15,8 +15,6 @@ export function NavBar() {
         });
     };
 
-    const handleLogIn = () => {
-    };
     return (
         <nav className="nav-container">
             <div className="company-container">
