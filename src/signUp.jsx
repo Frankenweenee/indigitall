@@ -6,7 +6,6 @@ import { useState } from "react";
 
 export function SignUp() {
     const [formState, setFormState] = useState(1);
-    
     const handleClick = () => {
         setFormState(formState + 1);
     };

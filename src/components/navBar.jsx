@@ -16,7 +16,6 @@ export function NavBar() {
     };
 
     const handleLogIn = () => {
-        console.log("log in");
     };
     return (
         <nav className="nav-container">

@@ -4,40 +4,37 @@ import { useIndigitall } from "../context/context";
 export function SignInForm({ onClick }) {
     const { topicsList, sendCustomEvent, topicsUnsubscribe, setEventState } =
         useIndigitall();
-
     const handleSubmit = (event) => {
         event.preventDefault();
         onClick();
-        if (sendCustomEvent) {
-            sendCustomEvent(
-                {
-                    eventType: "step1",
-                    customData: {},
-                    async: false,
-                },
-                (response) => {
-                    setEventState({
-                        message:
-                            "Ahora estás más cerca de unite al mundo INDIGITALL",
-                        backgroundColor: "blue",
-                    });
-                    topicsList.map((topic) => {
-                        if (
-                            topic.code === "incomplete_step1" &&
-                            topicsUnsubscribe
-                        ) {
-                            topic.subscribed = false;
-                            topicsUnsubscribe(topic.code, (error) => {
-                                console.log(error);
-                            });
-                        }
-                    });
-                },
-                (error) => {
-                    console.log(error);
-                }
-            );
-        }
+        sendCustomEvent(
+            {
+                eventType: "step1",
+                customData: {},
+                async: false,
+            },
+            (response) => {
+                setEventState({
+                    message:
+                        "Ahora estás más cerca de unite al mundo INDIGITALL",
+                    backgroundColor: "blue",
+                });
+                topicsList.map((topic) => {
+                    if (
+                        topic.code === "incomplete_step1" &&
+                        topicsUnsubscribe
+                    ) {
+                        topic.subscribed = false;
+                        topicsUnsubscribe(topic.code, (error) => {
+                            console.log(error);
+                        });
+                    }
+                });
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
     };
 
     return (
